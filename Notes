@@ -1,4 +1,5 @@
 _G.KeyCode = Enum.KeyCode.F
+local Core = game.CoreGui
 local BlackTheme = {
   BackgroundColor3 = Color3.fromRGB(0,0,0);
   Color = Color3.fromRGB(45,45,45);
@@ -83,6 +84,7 @@ ScrollingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ScrollingFrame.Position = UDim2.new(0, 0, 0.153061226, 0)
 ScrollingFrame.Size = UDim2.new(0, 335, 0, 332)
 
+TextBox_2.Name = "TB"
 TextBox_2.Parent = ScrollingFrame
 TextBox_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextBox_2.BorderSizePixel = 0
@@ -96,6 +98,7 @@ TextBox_2.TextWrapped = true
 TextBox_2.TextXAlignment = Enum.TextXAlignment.Left
 TextBox_2.TextYAlignment = Enum.TextYAlignment.Top
 
+TextLabel.Name = "TL"
 TextLabel.Parent = ss
 TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.Size = UDim2.new(0, 335, 0, 60)
@@ -105,6 +108,7 @@ TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.TextSize = 14.000
 TextLabel.TextScaled = true
 
+TextButton.Name = "TBS"
 TextButton.Parent = ss
 TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextButton.Position = UDim2.new(-0.146268651, 0, 0, 0)
@@ -244,7 +248,9 @@ end)
 	end)
 end
 end
+local s,r = pcall(function()
 if _G.Opened == true then
+	game.StarterGui:SetCore("DevConsoleVisible", true)
     if game.CoreGui:FindFirstChild("Notes") then
     for i, v in pairs(game.CoreGui:GetChildren()) do
     if v.Name == "Notes" then
@@ -256,9 +262,11 @@ if _G.Opened == true then
     Open()
     for i, v in pairs(game.CoreGui.Notes:GetDescendants()) do
     v.BorderSizePixel = 2
-    print("BLACK THEME IS CURRENTLY HAVING PROBLEM PLEASE DONT USE IT")
-    end
+    print("BLACK THEME IS CURRENTLY HAVING PROBLEM")
+end
+
 else
     _G.Opened = true
 	Open()
     end
+    end)
