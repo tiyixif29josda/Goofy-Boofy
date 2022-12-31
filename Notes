@@ -5,10 +5,7 @@ local BlackTheme = {
   Color = Color3.fromRGB(45,45,45);
   TextColor = Color3.fromRGB(255,255,255);
 }
-local function Open()
-	
-if _G.Opened == false or _G.Opened == nil then
-    _G.Opened = true
+
 local Notes = Instance.new("ScreenGui")
 local s = Instance.new("Frame")
 local TextBox = Instance.new("TextBox")
@@ -20,7 +17,13 @@ local ScrollingFrame = Instance.new("ScrollingFrame")
 local TextBox_2 = Instance.new("TextBox")
 local TextLabel = Instance.new("TextLabel")
 local TextButton = Instance.new("TextButton")
-local WelcomeText = "--tiyixifl29 was here"
+
+local function Open()
+	
+if _G.Opened == false or _G.Opened == nil then
+    _G.Opened = true
+
+local _G.WelcomeText = "new update :\n fixed black theme"
 --Properties:
 
 Notes.Name = "Notes"
@@ -91,7 +94,7 @@ TextBox_2.BorderSizePixel = 0
 TextBox_2.Size = UDim2.new(1, 0, 1, 0)
 TextBox_2.ClearTextOnFocus = false
 TextBox_2.Font = Enum.Font.Arial
-TextBox_2.Text = WelcomeText
+TextBox_2.Text = _G.WelcomeText
 TextBox_2.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextBox_2.TextSize = 28.000
 TextBox_2.TextWrapped = true
@@ -129,9 +132,9 @@ S.MouseButton1Click:Connect(function()
 	local succ,res = pcall(function()
 	p("[Saving...]")
 	writefile(tb.Text..".txt", TextBox_2.Text)
-	task.wait(1)
+	task.wait(.5)
 	p("[Done]")
-	task.wait(3)
+	task.wait(.5)
 	p(tname)
 
 	end)
@@ -141,12 +144,12 @@ L.MouseButton1Click:Connect(function()
 	if tb.Text == nil then error("ENTER THE FILE NAME") return end 
 	local suc, res = pcall(function()
 	p("[Checking...]")
-	task.wait(1)
+	task.wait(.5)
 	if isfile(tb.Text..".txt") then
 	p("["..tb.Text..".txt]")
-	task.wait(1)
+	task.wait(.5)
 	p("[Opening File...]")
-	task.wait(1)
+	task.wait(.5)
 	tb2.Text = readfile(tb.Text..".txt")
 	name.Text = tb.Text..".txt"
 	tname = tb.Text..".txt"
@@ -250,7 +253,6 @@ end
 end
 local s,r = pcall(function()
 if _G.Opened == true then
-	game.StarterGui:SetCore("DevConsoleVisible", true)
     if game.CoreGui:FindFirstChild("Notes") then
     for i, v in pairs(game.CoreGui:GetChildren()) do
     if v.Name == "Notes" then
@@ -262,7 +264,25 @@ if _G.Opened == true then
     Open()
     for i, v in pairs(game.CoreGui.Notes:GetDescendants()) do
     v.BorderSizePixel = 2
-    print("BLACK THEME IS CURRENTLY HAVING PROBLEM")
+    if _G.Theme == "BlackTheme" then
+    s.BackgroundColor3 = BlackTheme.BackgroundColor3
+	ss.BackgroundColor3 = BlackTheme.BackgroundColor3
+	ScrollingFrame.BackgroundColor3 = BlackTheme.BackgroundColor3
+	L.BackgroundColor3 = BlackTheme.Color
+	C.BackgroundColor3 = BlackTheme.Color
+    TextBox.BackgroundColor3 = BlackTheme.Color
+	TextButton.BackgroundColor3 = BlackTheme.Color
+	TextLabel.BackgroundColor3 = BlackTheme.Color
+	TextBox_2.BackgroundColor3 = BlackTheme.Color
+	S.BackgroundColor3 = BlackTheme.Color
+	L.TextColor3 = BlackTheme.TextColor
+	C.TextColor3 = BlackTheme.TextColor
+    TextBox.TextColor3 = BlackTheme.TextColor
+	TextButton.TextColor3 = BlackTheme.TextColor
+	TextLabel.TextColor3 = BlackTheme.TextColor
+	TextBox_2.TextColor3 = BlackTheme.TextColor
+	S.TextColor3 = BlackTheme.TextColor
+end
 end
 
 else
